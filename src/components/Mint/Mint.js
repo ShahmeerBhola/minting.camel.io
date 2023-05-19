@@ -12,7 +12,7 @@ export function Mint() {
   const debouncedQuantity = useDebounce(tokenQuantity);
 
   const { config } = usePrepareContractWrite({
-    address: "0xd89524902023B38265A3738a0400bb550d528Da4",
+    address: "0x9F3Ed54aDe9e9303c508dD087cD6A189942dC3D1",
     abi: [
       {
         inputs: [
@@ -38,7 +38,7 @@ export function Mint() {
       "0x0000000000000000000000000000000000000000",
       parseInt(debouncedQuantity),
     ],
-    value: ethers.utils.parseEther("1.15"),
+    value: "1500000000000000000",
     enabled: Boolean(debouncedQuantity),
   });
   const { data, write } = useContractWrite(config);

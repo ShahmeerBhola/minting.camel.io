@@ -1,16 +1,15 @@
 import HomePage from "./components/HomePage/HomePage";
 
+import { Web3Modal } from "@web3modal/react";
 import {
   EthereumClient,
   w3mConnectors,
   w3mProvider,
 } from "@web3modal/ethereum";
-import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { polygon, polygonMumbai } from "wagmi/chains";
-import { alchemyProvider } from "wagmi/providers/alchemy";
+import { polygon, polygonMumbai, hardhat } from "wagmi/chains";
 
-const chains = [polygon, polygonMumbai];
+const chains = [polygon, polygonMumbai, hardhat];
 const projectId = "3403cc5ea496db5cc63e0a4aab0de9e5";
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);

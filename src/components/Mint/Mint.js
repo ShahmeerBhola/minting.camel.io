@@ -12,9 +12,11 @@ export function Mint() {
   const [tokenQuantity, setTokenQuantity] = React.useState("");
   const debouncedQuantity = useDebounce(tokenQuantity);
 
+  // Contract Read
   const contractRead = useContractRead({
     address: process.env.REACT_APP_CONTRACT_ADDRESS,
     abi: [
+      // ABI for the contract function
       {
         inputs: [],
         name: "latestPrice",
@@ -32,15 +34,11 @@ export function Mint() {
     functionName: "latestPrice",
   });
 
-  console.log(
-    ethers.utils
-      .parseEther((100 / (parseInt(contractRead.data) / 10)).toString())
-      .toString()
-  );
-
+  // Contract Write
   const { config } = usePrepareContractWrite({
     address: process.env.REACT_APP_CONTRACT_ADDRESS,
     abi: [
+      // ABI for the contract function
       {
         inputs: [
           {
@@ -62,16 +60,18 @@ export function Mint() {
     ],
     functionName: "safeMint",
     args: [
-      "0x0000000000000000000000000000000000000000",
-      parseInt(debouncedQuantity),
+      // Arguments for the function call
+      "0x0000000000000000000000000000000000000000", // Referrer address
+      parseInt(debouncedQuantity), // Quantity of tokens (parsed from debounced value)
     ],
     value: ethers.utils
-      .parseEther((100 / (parseInt(contractRead.data) / 10)).toString())
+      .parseEther((100 / (parseInt(contractRead.data) / 10)).toString()) // Value in wei (calculated based on latestPrice)
       .toString(),
     enabled: Boolean(debouncedQuantity),
   });
   const { data, write } = useContractWrite(config);
 
+  // Wait for Transaction
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   });

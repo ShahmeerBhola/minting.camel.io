@@ -3,16 +3,43 @@ import {
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
+  useContractRead,
 } from "wagmi";
-import { ethers } from "ethers";
 import { useDebounce } from "use-debounce";
+import { ethers } from "ethers";
 
 export function Mint() {
   const [tokenQuantity, setTokenQuantity] = React.useState("");
   const debouncedQuantity = useDebounce(tokenQuantity);
 
+  const contractRead = useContractRead({
+    address: process.env.REACT_APP_CONTRACT_ADDRESS,
+    abi: [
+      {
+        inputs: [],
+        name: "latestPrice",
+        outputs: [
+          {
+            internalType: "uint256",
+            name: "",
+            type: "uint256",
+          },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+    ],
+    functionName: "latestPrice",
+  });
+
+  console.log(
+    ethers.utils
+      .parseEther((100 / (parseInt(contractRead.data) / 10)).toString())
+      .toString()
+  );
+
   const { config } = usePrepareContractWrite({
-    address: "0x9F3Ed54aDe9e9303c508dD087cD6A189942dC3D1",
+    address: process.env.REACT_APP_CONTRACT_ADDRESS,
     abi: [
       {
         inputs: [
@@ -38,7 +65,9 @@ export function Mint() {
       "0x0000000000000000000000000000000000000000",
       parseInt(debouncedQuantity),
     ],
-    value: "1500000000000000000",
+    value: ethers.utils
+      .parseEther((100 / (parseInt(contractRead.data) / 10)).toString())
+      .toString(),
     enabled: Boolean(debouncedQuantity),
   });
   const { data, write } = useContractWrite(config);

@@ -8,6 +8,9 @@ import {
 } from "@web3modal/ethereum";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { polygon, polygonMumbai, hardhat, avalancheFuji } from "wagmi/chains";
+import Minting from "./components/Minting/Minting";
+import Refer from "./components/Refer/Refer";
+import Contract from "./components/Contract/Contract";
 
 const chains = [polygon, polygonMumbai, hardhat, avalancheFuji];
 const projectId = "a29cf4b5746636c7837c991a368ccf18";
@@ -24,7 +27,10 @@ function App() {
   return (
     <>
       <WagmiConfig config={wagmiConfig}>
-        <HomePage />
+        {/* <HomePage /> */}
+        {/* <Minting /> */}
+        <Refer />
+        {/* <Contract /> */}
       </WagmiConfig>
 
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />

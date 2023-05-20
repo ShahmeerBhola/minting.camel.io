@@ -1,0 +1,90 @@
+.minting-content .camel {
+  height: 250px;
+  width: 300px;
+}
+.minting-content .connect {
+  background: radial-gradient(50% 50% at 50% 50%, #fdc850 0%, #ea5521 100%);
+  border-radius: 20px;
+  width: 250px;
+  height: 55px;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.minting-content .connect span {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+  text-transform: uppercase;
+}
+.minting-content .refer {
+  cursor: pointer;
+  width: 250px;
+  height: 55px;
+  border: none;
+  background: radial-gradient(50% 50% at 50% 50%, #5095fd 0%, #005b9c 100%);
+  border-radius: 20px;
+}
+.minting-content .refer span {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  text-transform: capitalize;
+}
+@media (max-width: 1000px) {
+  .minting-content .camel {
+    height: 200px;
+    width: 280px;
+  }
+  .minting-content .connect {
+    width: 200px;
+  }
+  .minting-content .connect span {
+    font-size: 20px;
+    line-height: 25px;
+  }
+  .minting-content .refer {
+    width: 200px;
+  }
+  .minting-content .refer span {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+@media (max-width: 786px) {
+  .minting-content .camel {
+    height: 200px;
+    width: 280px;
+  }
+  .minting-content .connect {
+    border-radius: 10px;
+    height: 45px;
+  }
+  .minting-content .refer {
+    border-radius: 10px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 400px) {
+  .minting-content .camel {
+    height: 200px;
+    width: 280px;
+  }
+  .minting-content .connect span {
+    font-size: 18px;
+    line-height: 36px;
+  }
+  .minting-content .refer span {
+    font-size: 18px;
+    line-height: 36px;
+  }
+}

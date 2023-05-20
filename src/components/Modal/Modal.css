@@ -74,6 +74,8 @@
   color: #ffffff;
 }
 .modal-generate {
+  cursor: pointer;
+  overflow: hidden;
   width: 232px;
   height: 50px;
   background: radial-gradient(50% 50% at 50% 50%, #fdc850 0%, #ea5521 100%);
@@ -90,11 +92,25 @@
 }
 
 .generated-link {
+  overflow: hidden;
   width: 341px;
   height: 50px;
   background: #ffffff;
   border: 1px solid #0961a6;
   border-radius: 10px;
+}
+.generated-link span {
+  text-overflow: ellipsis;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 0 10px;
+  line-height: 50px;
+  text-align: center;
+  color: #A7A7A7;
+  width: 98%; 
+  white-space: nowrap;
 }
 .modal-btn {
   display: flex;

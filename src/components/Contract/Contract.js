@@ -131,7 +131,7 @@ function Contract() {
       <p className="browser-extension">
         Please use Chrome/Firefox with MetaMask.
       </p>
-      <span className="minting-total ">3.000 ETH + Gas</span>
+      <span className="minting-total ">3.000 MATIC + Gas</span>
       <div className="contract-calculate">
         <button
           className="contract-btn"
@@ -155,7 +155,7 @@ function Contract() {
         <span>mint</span>
       </button>
       <div className="contract-bottom">
-        <p className="browser-extension">Total Minted 001/500</p>
+        <p className="browser-extension">Total Minted 000/500</p>
         <button className="contract-text">
           <span>view contract</span>
         </button>

@@ -112,7 +112,13 @@ function Contract() {
       <p className="browser-extension">
         Please use Chrome/Firefox with MetaMask.
       </p>
-      <span className="minting-total ">3.000 MATIC + Gas</span>
+      <span className="minting-total ">
+        {(
+          (100 / (parseInt(contractReads.data[0].result) / 10)) *
+          parseInt(debouncedQuantity).toString()
+        ).toFixed(2)}{" "}
+        MATIC + Gas
+      </span>
       <div className="contract-calculate">
         <button
           className="contract-btn"

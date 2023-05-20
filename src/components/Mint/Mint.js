@@ -3,17 +3,44 @@ import {
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
+  useContractRead,
+  useAccount,
 } from "wagmi";
-import { ethers } from "ethers";
 import { useDebounce } from "use-debounce";
+import { ethers } from "ethers";
 
 export function Mint() {
+  
   const [tokenQuantity, setTokenQuantity] = React.useState("");
   const debouncedQuantity = useDebounce(tokenQuantity);
 
-  const { config } = usePrepareContractWrite({
-    address: "0x9F3Ed54aDe9e9303c508dD087cD6A189942dC3D1",
+  // Contract Read
+  const contractRead = useContractRead({
+    address: process.env.REACT_APP_CONTRACT_ADDRESS,
     abi: [
+      // ABI for the contract function
+      {
+        inputs: [],
+        name: "latestPrice",
+        outputs: [
+          {
+            internalType: "uint256",
+            name: "",
+            type: "uint256",
+          },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+    ],
+    functionName: "latestPrice",
+  });
+
+  // Contract Write
+  const { config } = usePrepareContractWrite({
+    address: process.env.REACT_APP_CONTRACT_ADDRESS,
+    abi: [
+      // ABI for the contract function
       {
         inputs: [
           {
@@ -35,14 +62,18 @@ export function Mint() {
     ],
     functionName: "safeMint",
     args: [
-      "0x0000000000000000000000000000000000000000",
-      parseInt(debouncedQuantity),
+      // Arguments for the function call
+      "0x0000000000000000000000000000000000000000", // Referrer address
+      parseInt(debouncedQuantity), // Quantity of tokens (parsed from debounced value)
     ],
-    value: "1500000000000000000",
+    value: ethers?.utils
+      .parseEther((100 / (parseInt(contractRead.data) / 10)).toString()) // Value in wei (calculated based on latestPrice)
+      .toString(),
     enabled: Boolean(debouncedQuantity),
   });
   const { data, write } = useContractWrite(config);
 
+  // Wait for Transaction
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   });

@@ -39,6 +39,14 @@
   color: #fff;
   text-transform: capitalize;
 }
+.my-web3-button {
+  position: relative;
+}
+
+w3m-core-button w3m-connect-button w3m-button-big button {
+  background-color: #f00 !important; /* Replace with your desired background color */
+  /* Add any other styles as needed */
+}
 @media (max-width: 1000px) {
   .minting-content .camel {
     height: 200px;

@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Minting from "../Minting/Minting";
 import "./Contract.css";
+import {
+  usePrepareContractWrite,
+  useContractWrite,
+  useWaitForTransaction,
+  useContractRead,
+  useAccount,
+} from "wagmi";
+import { useDebounce } from "use-debounce";
+import { ethers } from "ethers";
+import { useNavigate } from "react-router-dom";
 
 function Contract() {
+  const { address } = useAccount();
+  const navigate = useNavigate();
   const [minting, setMinting] = useState({
     MATIC: true,
     USD: false,
@@ -15,13 +27,82 @@ function Contract() {
     setCount((prev) => prev - 1);
   };
   const changeHandler = (e) => {
-    console.log("heee", e.target.name);
     if (e.target.name === "MATIC") {
       setMinting((prev) => ({ ...prev, MATIC: true, USD: false }));
     } else {
       setMinting((prev) => ({ ...prev, MATIC: false, USD: true }));
     }
   };
+  const debouncedQuantity = useDebounce(count);
+
+  // Contract Read
+  const contractRead = useContractRead({
+    address: process.env.REACT_APP_CONTRACT_ADDRESS,
+    abi: [
+      // ABI for the contract function
+      {
+        inputs: [],
+        name: "latestPrice",
+        outputs: [
+          {
+            internalType: "uint256",
+            name: "",
+            type: "uint256",
+          },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+    ],
+    functionName: "latestPrice",
+  });
+
+  // Contract Write
+  const { config } = usePrepareContractWrite({
+    address: process.env.REACT_APP_CONTRACT_ADDRESS,
+    abi: [
+      // ABI for the contract function
+      {
+        inputs: [
+          {
+            internalType: "address payable",
+            name: "_referrer",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "_quantity",
+            type: "uint256",
+          },
+        ],
+        name: "safeMint",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+      },
+    ],
+    functionName: "safeMint",
+    args: [
+      // Arguments for the function call
+      "0x0000000000000000000000000000000000000000", // Referrer address
+      parseInt(debouncedQuantity), // Quantity of tokens (parsed from debounced value)
+    ],
+    value: ethers.utils.parseEther((100 / (parseInt(contractRead.data) / 10)).toString()).toString(), // Value in wei (calculated based on latestPrice)
+
+    enabled: Boolean(debouncedQuantity),
+  });
+  const { data, write } = useContractWrite(config);
+
+  // Wait for Transaction
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  });
+
+  useEffect(() => {
+    if (address === undefined) {
+      navigate("/");
+    }
+  }, [address]);
   return (
     <Minting>
       <div className="radio-section">
@@ -65,7 +146,11 @@ function Contract() {
           </p>
         </button>
       </div>
-      <button className="contract-connect">
+      <button
+        className="contract-connect"
+        onClick={() => write?.()}
+        disabled={!write || isLoading}
+      >
         <span>mint</span>
       </button>
       <div className="contract-bottom">

@@ -1,0 +1,274 @@
+.radio-section {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+.radio-in {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.radio-in .radio {
+  visibility: hidden;
+  position: relative;
+}
+.radio-in input[type="radio"]:after {
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  top: -8px;
+  left: -8px;
+  position: relative;
+  background-color: none;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid #f4f5f7;
+}
+.radio-in input[type="radio"]:before {
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  top: -8px;
+  left: -8px;
+  position: absolute;
+  background-color: none;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid #f4f5f7;
+}
+
+.radio-in input[type="radio"]:checked:after {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(50% 50% at 50% 50%, #fdc850 0%, #ea5521 100%);
+  content: "";
+  top: -2px;
+  left: -2px;
+  display: inline-block;
+  visibility: visible;
+  border: none;
+}
+.radio-in span {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+.browser-extension {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  margin: 0;
+}
+.minting-total {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #ffffff;
+}
+.contract-calculate {
+  width: 225px;
+  height: 50px;
+  background: #f4f5f7;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contract-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 52px;
+  background: radial-gradient(50% 50% at 50% 50%, #fdc850 0%, #ea5521 100%);
+  border-radius: 10px;
+  border: none;
+  position: relative;
+}
+.contract-btn p {
+  position: absolute;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  top: 3px;
+  height: 100%;
+  margin: 0;
+}
+
+.contract-btn .increment {
+  position: absolute;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  top: 5px;
+  height: 100%;
+  margin: 0;
+}
+
+.contract-value {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #1e1e1e;
+}
+
+.contract-connect {
+  background: radial-gradient(50% 50% at 50% 50%, #fdc850 0%, #ea5521 100%);
+  border-radius: 20px;
+  width: 250px;
+  height: 60px;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.contract-connect span {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+  text-transform: uppercase;
+}
+.contract-text {
+  border: none;
+  background: none;
+}
+.contract-text span {
+  cursor: pointer;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
+  text-transform: capitalize;
+  color: #ea5521;
+}
+
+.contract-bottom {
+  display: block;
+  text-align: center;
+}
+
+@media (max-width: 786px) {
+  .browser-extension {
+    font-size: 16px;
+    line-height: 30px;
+  }
+  .minting-total {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .contract-value {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .contract-connect {
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .contract-connect span {
+    font-size: 22px;
+    line-height: 26px;
+  }
+  .contract-text span {
+    font-size: 16px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .radio-in input[type="radio"]:after {
+    width: 18px;
+    height: 18px;
+    top: -5px;
+    left: -5px;
+  }
+  .radio-in input[type="radio"]:before {
+    width: 18px;
+    height: 18px;
+    top: -5px;
+    left: -5px;
+  }
+
+  .radio-in input[type="radio"]:checked:after {
+    width: 12px;
+    height: 12px;
+    top: -1px;
+    left: -1px;
+  }
+  .radio-in span {
+    font-size: 14px;
+  }
+  .browser-extension {
+    font-size: 14px;
+  }
+  .minting-total {
+    font-size: 18px;
+  }
+  .contract-calculate {
+    width: 180px;
+    height: 40px;
+  }
+  .contract-btn {
+    height: 100%;
+    width: 40px;
+  }
+  .contract-btn p {
+    font-size: 36px;
+    top: 0px;
+  }
+
+  .contract-btn .increment {
+    font-size: 36px;
+    top: 2px;
+  }
+
+  .contract-value {
+    line-height: 18px;
+  }
+
+  .contract-connect {
+    border-radius: 10px;
+    width: 220px;
+    height: 50px;
+  }
+
+  .contract-connect span {
+    font-size: 18px;
+  }
+}

@@ -87,7 +87,8 @@ function Contract() {
       "0x0000000000000000000000000000000000000000", // Referrer address
       parseInt(debouncedQuantity), // Quantity of tokens (parsed from debounced value)
     ],
-    value: ethers.utils.parseEther((100 / (parseInt(contractRead.data) / 10)).toString()).toString(), // Value in wei (calculated based on latestPrice)
+    value: "7.3",
+    // ethers.utils.parseEther((100 / (parseInt(contractRead.data) / 10)).toString()).toString(), // Value in wei (calculated based on latestPrice)
 
     enabled: Boolean(debouncedQuantity),
   });

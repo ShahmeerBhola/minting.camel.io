@@ -4,11 +4,13 @@ import {
   useContractWrite,
   useWaitForTransaction,
   useContractRead,
+  useAccount,
 } from "wagmi";
 import { useDebounce } from "use-debounce";
 import { ethers } from "ethers";
 
 export function Mint() {
+  
   const [tokenQuantity, setTokenQuantity] = React.useState("");
   const debouncedQuantity = useDebounce(tokenQuantity);
 
@@ -64,7 +66,7 @@ export function Mint() {
       "0x0000000000000000000000000000000000000000", // Referrer address
       parseInt(debouncedQuantity), // Quantity of tokens (parsed from debounced value)
     ],
-    value: ethers.utils
+    value: ethers?.utils
       .parseEther((100 / (parseInt(contractRead.data) / 10)).toString()) // Value in wei (calculated based on latestPrice)
       .toString(),
     enabled: Boolean(debouncedQuantity),

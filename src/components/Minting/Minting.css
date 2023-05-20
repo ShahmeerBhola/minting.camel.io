@@ -1,0 +1,156 @@
+.minting-container {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.minting-section {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.minting-buttons {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.minting-image {
+  width: 50%;
+  background: url(../../assets/images/Banner.svg);
+  background-size: cover;
+}
+.minting-content {
+  width: 50%;
+  background: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.minting-content .logo {
+  height: 60px;
+  width: 230px;
+}
+.minting-content .porsche {
+  height: 55px;
+  width: 500px;
+}
+.minting-content .content {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .minting-content .logo {
+    height: 50px;
+    width: 180px;
+  }
+  .minting-content .porsche {
+    height: 45px;
+    width: 400px;
+  }
+  .minting-content .content {
+    font-size: 28px;
+    line-height: 45px;
+  }
+  .minting-content .camel {
+    height: 200px;
+    width: 280px;
+  }
+  .minting-content .connect {
+    width: 200px;
+    height: 45px;
+  }
+  .minting-content .connect span {
+    font-size: 20px;
+    line-height: 25px;
+  }
+  .minting-content .refer {
+    width: 200px;
+    height: 45px;
+  }
+  .minting-content .refer span {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+@media (max-width: 786px) {
+  .minting-section {
+    display: block;
+    position: relative;
+  }
+  .minting-image {
+    width: 100%;
+    height: 100%;
+  }
+  .minting-content {
+    width: 100%;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 74.79%);
+    height: 100%;
+    top: 0;
+  }
+  .minting-content .logo {
+    height: 50px;
+    width: 180px;
+  }
+  .minting-content .porsche {
+    height: 45px;
+    width: 400px;
+  }
+  .minting-content .content {
+    font-size: 28px;
+    line-height: 45px;
+  }
+  .minting-content .camel {
+    height: 200px;
+    width: 280px;
+  }
+  .minting-content .connect {
+    border-radius: 10px;
+  }
+  .minting-content .refer {
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .minting-content .logo {
+    width: 150px;
+  }
+  .minting-content .porsche {
+    height: 30px;
+    width: 300px;
+  }
+  .minting-content .content {
+    font-size: 18px;
+    line-height: 30px;
+  }
+  .minting-content .camel {
+    height: 200px;
+    width: 280px;
+  }
+  .minting-content .connect {
+    border-radius: 10px;
+  }
+  .minting-content .connect span {
+    font-size: 18px;
+    line-height: 36px;
+  }
+  .minting-content .refer {
+    border-radius: 10px;
+  }
+  .minting-content .refer span {
+    font-size: 18px;
+    line-height: 36px;
+  }
+}

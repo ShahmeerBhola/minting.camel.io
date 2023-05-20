@@ -6,11 +6,12 @@ import {
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
-  useContractRead,
+  useContractReads,
   useAccount,
 } from "wagmi";
 import { useDebounce } from "use-debounce";
 import { useNavigate } from "react-router-dom";
+import { contractAbi } from "../../utils/contractABI";
 
 function Contract() {
   const { address } = useAccount();
@@ -35,52 +36,26 @@ function Contract() {
   };
   const debouncedQuantity = useDebounce(count);
 
-  // Contract Read
-  const contractRead = useContractRead({
-    address: process.env.REACT_APP_CONTRACT_ADDRESS,
-    abi: [
-      // ABI for the contract function
+  const contractReads = useContractReads({
+    contracts: [
       {
-        inputs: [],
-        name: "latestPrice",
-        outputs: [
-          {
-            internalType: "uint256",
-            name: "",
-            type: "uint256",
-          },
-        ],
-        stateMutability: "view",
-        type: "function",
+        address: process.env.REACT_APP_CONTRACT_ADDRESS,
+        abi: contractAbi,
+        functionName: "latestPrice",
+      },
+      {
+        address: process.env.REACT_APP_CONTRACT_ADDRESS,
+        abi: contractAbi,
+        functionName: "totalSupply",
       },
     ],
-    functionName: "latestPrice",
+    watch: true,
   });
 
   // Contract Write
   const { config } = usePrepareContractWrite({
     address: process.env.REACT_APP_CONTRACT_ADDRESS,
-    abi: [
-      // ABI for the contract function
-      {
-        inputs: [
-          {
-            internalType: "address payable",
-            name: "_referrer",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "_quantity",
-            type: "uint256",
-          },
-        ],
-        name: "safeMint",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
-      },
-    ],
+    abi: contractAbi,
     functionName: "safeMint",
     args: [
       // Arguments for the function call
@@ -90,7 +65,7 @@ function Contract() {
     value: ethers.utils
       .parseEther(
         (
-          (100 / (parseInt(contractRead.data) / 10)) *
+          (100 / (parseInt(contractReads.data[0].result) / 10)) *
           parseInt(debouncedQuantity)
         ).toString()
       )
@@ -161,7 +136,9 @@ function Contract() {
         <span>mint</span>
       </button>
       <div className="contract-bottom">
-        <p className="browser-extension">Total Minted 000/500</p>
+        <p className="browser-extension">
+          Total Minted {parseInt(contractReads.data[1].result)}/500
+        </p>
         <button className="contract-text">
           <span>view contract</span>
         </button>

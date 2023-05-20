@@ -7,8 +7,7 @@ import {
   w3mProvider,
 } from "@web3modal/ethereum";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { polygon, polygonMumbai, hardhat, avalancheFuji } from "wagmi/chains";
-import Minting from "./components/Minting/Minting";
+import { polygon, avalancheFuji } from "wagmi/chains";
 import Refer from "./components/Refer/Refer";
 import Contract from "./components/Contract/Contract";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

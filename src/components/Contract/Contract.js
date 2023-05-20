@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Minting from "../Minting/Minting";
 import "./Contract.css";
+import { ethers } from "ethers";
 import {
   usePrepareContractWrite,
   useContractWrite,
@@ -9,7 +10,6 @@ import {
   useAccount,
 } from "wagmi";
 import { useDebounce } from "use-debounce";
-import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
 
 function Contract() {
@@ -87,8 +87,14 @@ function Contract() {
       "0x0000000000000000000000000000000000000000", // Referrer address
       parseInt(debouncedQuantity), // Quantity of tokens (parsed from debounced value)
     ],
-    value: "7.3",
-    // ethers.utils.parseEther((100 / (parseInt(contractRead.data) / 10)).toString()).toString(), // Value in wei (calculated based on latestPrice)
+    value: ethers.utils
+      .parseEther(
+        (
+          (100 / (parseInt(contractRead.data) / 10)) *
+          parseInt(debouncedQuantity)
+        ).toString()
+      )
+      .toString(), // Value in wei (calculated based on latestPrice)
 
     enabled: Boolean(debouncedQuantity),
   });

@@ -1,7 +1,7 @@
 import React from "react";
-import { Mint } from "../Mint/Mint";
 import "./HomePage.css";
 import { Web3Button, Web3NetworkSwitch } from "@web3modal/react";
+import Contract from "../Contract/Contract";
 
 function HomePage() {
   return (
@@ -11,7 +11,7 @@ function HomePage() {
         <Web3NetworkSwitch />
       </div>
       <div className="centered-content"></div>
-      <Mint />
+      <Contract />
     </div>
   );
 }

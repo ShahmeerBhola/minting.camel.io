@@ -11,6 +11,7 @@ import { polygon, polygonMumbai, hardhat, avalancheFuji } from "wagmi/chains";
 import Minting from "./components/Minting/Minting";
 import Refer from "./components/Refer/Refer";
 import Contract from "./components/Contract/Contract";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const chains = [polygon, polygonMumbai, hardhat, avalancheFuji];
 const projectId = "a29cf4b5746636c7837c991a368ccf18";
@@ -27,10 +28,12 @@ function App() {
   return (
     <>
       <WagmiConfig config={wagmiConfig}>
-        {/* <HomePage /> */}
-        {/* <Minting /> */}
-        <Refer />
-        {/* <Contract /> */}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Refer />} />
+            <Route path="/contract" element={<Contract />} />
+          </Routes>
+        </BrowserRouter>
       </WagmiConfig>
 
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />

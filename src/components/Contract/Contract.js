@@ -25,7 +25,6 @@ function Contract() {
           (x) => x === location.search.slice(8)
         );
         if (checkWallet !== undefined) {
-
           setWallet(checkWallet);
         } else {
           setWallet(location.search.slice(8));
@@ -85,6 +84,11 @@ function Contract() {
       setPrice(data[0].result);
     },
   });
+
+  console.log("Price", price);
+  console.log("Price ParseINt", parseInt(price));
+  console.log("Debounce Quantity", debouncedQuantity);
+  console.log("Debounce ParseInt", parseInt(debouncedQuantity));
 
   // Contract Write
   const { config } = usePrepareContractWrite({

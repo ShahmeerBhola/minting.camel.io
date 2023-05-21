@@ -20,6 +20,9 @@ function Contract() {
     MATIC: true,
     USD: false,
   });
+
+  const [totalSupply, setTotalSupply] = useState(1);
+  const [price, setPrice] = useState(1);
   const [count, setCount] = useState(1);
   const increment = () => {
     setCount((prev) => prev + 1);
@@ -49,7 +52,10 @@ function Contract() {
         functionName: "totalSupply",
       },
     ],
-    watch: true,
+    onSuccess(data) {
+      setTotalSupply(data[1].result);
+      setPrice(data[0].result);
+    },
   });
 
   // Contract Write
@@ -65,7 +71,7 @@ function Contract() {
     value: ethers.utils
       .parseEther(
         (
-          (100 / (parseInt(contractReads.data[0].result) / 10)) *
+          (100 / (parseInt(price) / 10)) *
           parseInt(debouncedQuantity)
         ).toString()
       )
@@ -114,7 +120,7 @@ function Contract() {
       </p>
       <span className="minting-total ">
         {(
-          (100 / (parseInt(contractReads.data[0].result) / 10)) *
+          (100 / (parseInt(price) / 10)) *
           parseInt(debouncedQuantity).toString()
         ).toFixed(2)}{" "}
         MATIC + Gas
@@ -143,7 +149,7 @@ function Contract() {
       </button>
       <div className="contract-bottom">
         <p className="browser-extension">
-          Total Minted {parseInt(contractReads.data[1].result)}/500
+          Total Minted {parseInt(totalSupply)}/500
         </p>
         <button className="contract-text">
           <span>view contract</span>

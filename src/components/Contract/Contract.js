@@ -9,6 +9,7 @@ import {
   useContractReads,
   useAccount,
 } from "wagmi";
+import { fetchBlockNumber } from "wagmi/actions";
 import { useDebounce } from "use-debounce";
 import { useNavigate } from "react-router-dom";
 import { contractAbi } from "../../utils/contractABI";
@@ -94,6 +95,7 @@ function Contract() {
   console.log("Debounce ParseInt", parseInt(debouncedQuantity));
   console.log("Contract address", process.env.REACT_APP_CONTRACT_ADDRESS);
   console.log("contract Reads", contractReads.data);
+  console.log("Wagmi BlockNumber", fetchBlockNumber());
 
   // Contract Write
   const { config } = usePrepareContractWrite({

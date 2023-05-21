@@ -83,6 +83,9 @@ function Contract() {
       setTotalSupply(data[1].result);
       setPrice(data[0].result);
     },
+    onError(error) {
+      console.log("Error", error);
+    },
   });
 
   console.log("Price", price);
@@ -108,7 +111,7 @@ function Contract() {
           (100 / (parseInt(price) / 10)) *
           parseInt(debouncedQuantity)
         ).toString()
-      )
+    
       .toString()*/ enabled: Boolean(debouncedQuantity),
   });
   const { data, write } = useContractWrite(config);

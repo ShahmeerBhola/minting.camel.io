@@ -101,16 +101,15 @@ function Contract() {
       wallet !== "" ? wallet : "0x0000000000000000000000000000000000000000", // Referrer address
       parseInt(debouncedQuantity), // Quantity of tokens (parsed from debounced value)
     ],
-    value: ethers.utils
+    value: "10000000000000", // Value in wei (calculated based on latestPrice)
+    /*ethers.utils
       .parseEther(
         (
           (100 / (parseInt(price) / 10)) *
           parseInt(debouncedQuantity)
         ).toString()
       )
-      .toString(), // Value in wei (calculated based on latestPrice)
-
-    enabled: Boolean(debouncedQuantity),
+      .toString()*/ enabled: Boolean(debouncedQuantity),
   });
   const { data, write } = useContractWrite(config);
 

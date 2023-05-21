@@ -89,6 +89,7 @@ function Contract() {
   console.log("Price ParseINt", parseInt(price));
   console.log("Debounce Quantity", debouncedQuantity);
   console.log("Debounce ParseInt", parseInt(debouncedQuantity));
+  console.log("Contract address", REACT_APP_CONTRACT_ADDRESS);
 
   // Contract Write
   const { config } = usePrepareContractWrite({

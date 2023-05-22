@@ -8,6 +8,7 @@ import {
   useWaitForTransaction,
   useContractReads,
   useAccount,
+  useContractRead,
 } from "wagmi";
 import { fetchBlockNumber } from "wagmi/actions";
 import { useDebounce } from "use-debounce";
@@ -89,6 +90,18 @@ function Contract() {
     },
   });
 
+  const contractRead = useContractRead({
+    address: process.env.REACT_APP_CONTRACT_ADDRESS,
+    abi: contractAbi,
+    functionName: "latestPrice",
+    onSuccess(data) {
+      console.log("Contract Read on Success", data);
+    },
+    onError(error) {
+      console.log("Error", error);
+    },
+  });
+
   console.log("Price", price);
   console.log("Price ParseINt", parseInt(price));
   console.log("Debounce Quantity", debouncedQuantity);
@@ -96,6 +109,7 @@ function Contract() {
   console.log("Contract address", process.env.REACT_APP_CONTRACT_ADDRESS);
   console.log("contract Reads", contractReads.data);
   console.log("Wagmi BlockNumber", fetchBlockNumber());
+  console.log("contract Read", contractRead.data);
 
   // Contract Write
   const { config } = usePrepareContractWrite({

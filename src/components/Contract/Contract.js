@@ -7,12 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { contractAbi } from "../../utils/contractABI";
 import { useLocation } from "react-router-dom";
 import { ethers } from "ethers";
+import { toast } from "react-toastify";
 
 function Contract() {
   const location = useLocation();
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const [wallet, setWallet] = useState("");
   const [reciept, setRecipt] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const walletArray = JSON.parse(localStorage.getItem("walletAddresses"));
@@ -77,6 +79,7 @@ function Contract() {
   getValues();
 
   const sendTransaction = async () => {
+    setIsLoading(true);
     const signer = await provider.getSigner();
 
     const contract = new ethers.Contract(
@@ -100,8 +103,13 @@ function Contract() {
 
       const transactionReciept = await result.wait();
       setRecipt(transactionReciept);
+      toast.success("Transaction successful !!");
+      setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      setIsLoading(false);
+      if (error?.code === -32603) {
+        toast.error("Insufficient Balance");
+      }
     }
   };
 
@@ -162,8 +170,9 @@ function Contract() {
       <button
         className="contract-connect"
         onClick={sendTransaction}
-        // disabled={!write || isLoading}
+        disabled={isLoading}
       >
+        {isLoading && <div className="loader" />}
         <span>mint</span>
       </button>
       <div className="contract-bottom">

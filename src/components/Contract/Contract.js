@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Minting from "../Minting/Minting";
 import "./Contract.css";
-import { ethers } from "ethers";
 import {
   usePrepareContractWrite,
   useContractWrite,

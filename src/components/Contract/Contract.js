@@ -8,6 +8,7 @@ import {
   useContractReads,
   useAccount,
   useContractRead,
+  usePublicClient,
 } from "wagmi";
 import { fetchBlockNumber } from "wagmi/actions";
 import { useDebounce } from "use-debounce";
@@ -104,6 +105,15 @@ function Contract() {
   console.log("contract Reads", contractReads.data);
   console.log("Wagmi BlockNumber", fetchBlockNumber());
   console.log("contract Read", contractRead.data);
+
+  console.log(
+    "Public Client",
+    usePublicClient().readContract({
+      address: process.env.REACT_APP_CONTRACT_ADDRESS,
+      abi: contractAbi,
+      functionName: "latestPrice",
+    })
+  );
 
   // Contract Write
   const { config } = usePrepareContractWrite({

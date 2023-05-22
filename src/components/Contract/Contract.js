@@ -5,19 +5,17 @@ import {
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
-  useContractReads,
   useAccount,
-  useContractRead,
-  usePublicClient,
 } from "wagmi";
-import { fetchBlockNumber } from "wagmi/actions";
 import { useDebounce } from "use-debounce";
 import { useNavigate } from "react-router-dom";
 import { contractAbi } from "../../utils/contractABI";
 import { useLocation } from "react-router-dom";
+import { ethers } from "ethers";
 
 function Contract() {
   const location = useLocation();
+  const provider = new ethers.BrowserProvider(window.ethereum);
   const [wallet, setWallet] = useState("");
   useEffect(() => {
     const walletArray = JSON.parse(localStorage.getItem("walletAddresses"));
@@ -68,52 +66,18 @@ function Contract() {
   };
   const debouncedQuantity = useDebounce(count);
 
-  const contractReads = useContractReads({
-    contracts: [
-      {
-        address: process.env.REACT_APP_CONTRACT_ADDRESS,
-        abi: contractAbi,
-        functionName: "latestPrice",
-      },
-      {
-        address: process.env.REACT_APP_CONTRACT_ADDRESS,
-        abi: contractAbi,
-        functionName: "totalSupply",
-      },
-    ],
-    onSuccess(data) {
-      setTotalSupply(data[1].result);
-      setPrice(data[0].result);
-    },
-    onError(error) {
-      console.log("Error", error);
-    },
-  });
-
-  const contractRead = useContractRead({
-    address: process.env.REACT_APP_CONTRACT_ADDRESS,
-    abi: contractAbi,
-    functionName: "latestPrice",
-    onSuccess(data) {
-      console.log("Contract Read on Success", data);
-    },
-    onError(error) {
-      console.log("Error", error);
-    },
-  });
-
-  console.log("contract Reads", contractReads.data);
-  console.log("Wagmi BlockNumber", fetchBlockNumber());
-  console.log("contract Read", contractRead.data);
-
-  console.log(
-    "Public Client",
-    usePublicClient().readContract({
-      address: process.env.REACT_APP_CONTRACT_ADDRESS,
-      abi: contractAbi,
-      functionName: "latestPrice",
-    })
-  );
+  const getValues = async () => {
+    const contract = new ethers.Contract(
+      process.env.REACT_APP_CONTRACT_ADDRESS,
+      contractAbi,
+      provider
+    );
+    const result = await contract.totalSupply();
+    const result2 = await contract.latestPrice();
+    setTotalSupply(result);
+    setPrice(result2);
+  };
+  getValues();
 
   // Contract Write
   const { config } = usePrepareContractWrite({
@@ -125,15 +89,16 @@ function Contract() {
       wallet !== "" ? wallet : "0x0000000000000000000000000000000000000000", // Referrer address
       parseInt(debouncedQuantity), // Quantity of tokens (parsed from debounced value)
     ],
-    value: "10000000000000", // Value in wei (calculated based on latestPrice)
-    /*ethers.utils
+    // Value in wei (calculated based on latestPrice)
+    value: ethers
       .parseEther(
         (
           (100 / (parseInt(price) / 10)) *
           parseInt(debouncedQuantity)
         ).toString()
-    
-      .toString()*/ enabled: Boolean(debouncedQuantity),
+      )
+      .toString(),
+    enabled: Boolean(debouncedQuantity),
   });
   const { data, write } = useContractWrite(config);
 

@@ -71,7 +71,19 @@ function Contract() {
     contracts: [
       {
         address: process.env.REACT_APP_CONTRACT_ADDRESS,
-        abi: contractAbi,
+        abi: {
+          inputs: [],
+          name: "latestPrice",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
         functionName: "latestPrice",
       },
       {

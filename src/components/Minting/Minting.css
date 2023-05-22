@@ -9,12 +9,15 @@
   height: 100%;
 }
 .minting-buttons {
+  z-index: 99;
   position: absolute;
   top: 10px;
   right: 20px;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
+  justify-content: center;
 }
 .minting-image {
   width: 50%;

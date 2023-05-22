@@ -5,8 +5,7 @@ import "./Modal.css";
 
 export const Modal = ({ onClose, show }) => {
   const { address } = useAccount();
-  // const baseUrl = "http://localhost:3000/contract";
-  const baseUrl = "https://referral-front-end.vercel.app/contract";
+  const baseUrl = `${window.location.origin}/contract`;
   const [walletAddress, setWalletAddress] = useState("");
   const linkHandler = () => {
     setWalletAddress(address);

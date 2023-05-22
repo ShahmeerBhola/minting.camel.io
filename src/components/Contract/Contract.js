@@ -71,19 +71,7 @@ function Contract() {
     contracts: [
       {
         address: process.env.REACT_APP_CONTRACT_ADDRESS,
-        abi: {
-          inputs: [],
-          name: "latestPrice",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
+        abi: contractAbi,
         functionName: "latestPrice",
       },
       {
@@ -113,11 +101,6 @@ function Contract() {
     },
   });
 
-  console.log("Price", price);
-  console.log("Price ParseINt", parseInt(price));
-  console.log("Debounce Quantity", debouncedQuantity);
-  console.log("Debounce ParseInt", parseInt(debouncedQuantity));
-  console.log("Contract address", process.env.REACT_APP_CONTRACT_ADDRESS);
   console.log("contract Reads", contractReads.data);
   console.log("Wagmi BlockNumber", fetchBlockNumber());
   console.log("contract Read", contractRead.data);

@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Minting from "../Minting/Minting";
 import "./Contract.css";
-import {
-  usePrepareContractWrite,
-  useContractWrite,
-  useWaitForTransaction,
-  useAccount,
-} from "wagmi";
+import { useAccount } from "wagmi";
 import { useDebounce } from "use-debounce";
 import { useNavigate } from "react-router-dom";
 import { contractAbi } from "../../utils/contractABI";
@@ -15,8 +10,10 @@ import { ethers } from "ethers";
 
 function Contract() {
   const location = useLocation();
-  const provider = new ethers.BrowserProvider(window.ethereum);
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
   const [wallet, setWallet] = useState("");
+  const [reciept, setRecipt] = useState();
+
   useEffect(() => {
     const walletArray = JSON.parse(localStorage.getItem("walletAddresses"));
     if (location?.search !== "") {
@@ -79,33 +76,34 @@ function Contract() {
   };
   getValues();
 
-  // Contract Write
-  const { config } = usePrepareContractWrite({
-    address: process.env.REACT_APP_CONTRACT_ADDRESS,
-    abi: contractAbi,
-    functionName: "safeMint",
-    args: [
-      // Arguments for the function call
-      wallet !== "" ? wallet : "0x0000000000000000000000000000000000000000", // Referrer address
-      parseInt(debouncedQuantity), // Quantity of tokens (parsed from debounced value)
-    ],
-    // Value in wei (calculated based on latestPrice)
-    value: ethers
-      .parseEther(
-        (
-          (100 / (parseInt(price) / 10)) *
-          parseInt(debouncedQuantity)
-        ).toString()
-      )
-      .toString(),
-    enabled: Boolean(debouncedQuantity),
-  });
-  const { data, write } = useContractWrite(config);
+  const sendTransaction = async () => {
+    const signer = await provider.getSigner();
 
-  // Wait for Transaction
-  const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
-  });
+    const contract = new ethers.Contract(
+      process.env.REACT_APP_CONTRACT_ADDRESS,
+      contractAbi,
+      signer
+    );
+    try {
+      const result = await contract.safeMint(
+        wallet !== "" ? wallet : "0x0000000000000000000000000000000000000000",
+        parseInt(debouncedQuantity),
+        {
+          value: ethers.utils.parseEther(
+            (
+              (100 / (parseInt(price) / 10)) *
+              parseInt(debouncedQuantity)
+            ).toString()
+          ),
+        }
+      );
+
+      const transactionReciept = await result.wait();
+      setRecipt(transactionReciept);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (address === undefined) {
@@ -163,8 +161,8 @@ function Contract() {
       </div>
       <button
         className="contract-connect"
-        onClick={() => write?.()}
-        disabled={!write || isLoading}
+        onClick={sendTransaction}
+        // disabled={!write || isLoading}
       >
         <span>mint</span>
       </button>

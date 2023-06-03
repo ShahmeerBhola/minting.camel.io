@@ -2,6 +2,23 @@
   /* height: 250px; */
   width: 300px;
 }
+.mob-link {
+  padding: 0px 15px;
+  height: 40px;
+  border-radius: 7px;
+  text-align: center;
+  color: #fff;
+  line-height: 37px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #f5841f;
+  border: 1px solid #f5841f;
+  margin-top: 10px;
+}
+.mob-link a {
+  text-decoration: none;
+  color: #fff;
+}
 .minting-content .connect {
   background: radial-gradient(50% 50% at 50% 50%, #fdc850 0%, #ea5521 100%);
   border-radius: 20px;

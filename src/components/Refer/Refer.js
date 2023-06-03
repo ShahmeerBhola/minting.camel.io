@@ -7,7 +7,6 @@ import { useAccount } from "wagmi";
 import { Porsche911 } from "../../assets/images";
 import Minting from "../Minting/Minting";
 import { Modal } from "../Modal/Modal";
-import { toast } from "react-toastify";
 import "./Refer.css";
 
 function Refer() {

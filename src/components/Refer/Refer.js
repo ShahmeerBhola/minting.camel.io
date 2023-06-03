@@ -16,36 +16,40 @@ function Refer() {
   function clickHandler() {
     setShow(true);
   }
-  useEffect(() => {
-    if (isIOS) {
-      if (window?.ethereum && window?.ethereum?.isMetaMask) {
-      } else {
-        toast.warning("Install Metamask through AppStore");
-        const Url = `metamask://dapp/${window.location.origin?.slice(8)}`;
-        setTimeout(() => {
-          window.open(Url, "_blank");
-        }, 2000);
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (isIOS) {
+  //     if (window?.ethereum && window?.ethereum?.isMetaMask) {
+  //     } else {
+  //       toast.warning("Install Metamask through AppStore");
+  //       const Url = `metamask://dapp/${window.location.origin?.slice(8)}`;
+  //       setTimeout(() => {
+  //         window.open(Url, "_blank");
+  //       }, 2000);
+  //     }
+  //   }
+  // }, []);
 
   const onClick = () => {
     toast.info("Minting Will Start Soon..");
   };
+  // isIOS ? (
+  //   <button className="mob-link">
+  //     <a href="dapp://localhost:3000">Connect Wallet</a>
+  //   </button>
+  // ) :
+  //  (
+  //   <div className="my-web3-button">
+  //     <Web3Button />
+  //   </div>
+  // )
   return (
     <>
       <Minting>
         <img className="camel" src={Porsche911} alt="Camel" />
         {address === undefined ? (
-          isIOS ? (
-            <button className="mob-link">
-              <a href="dapp://localhost:3000">Connect Wallet</a>
-            </button>
-          ) : (
-            <div className="my-web3-button">
-              <Web3Button />
-            </div>
-          )
+          <div className="my-web3-button">
+            <Web3Button />
+          </div>
         ) : (
           <button
             className="connect"

@@ -7,6 +7,7 @@ import { useAccount } from "wagmi";
 import { Porsche911 } from "../../assets/images";
 import Minting from "../Minting/Minting";
 import { Modal } from "../Modal/Modal";
+import { toast } from "react-toastify";
 import "./Refer.css";
 
 function Refer() {
@@ -28,6 +29,10 @@ function Refer() {
       }
     }
   }, []);
+
+  const onClick = () => {
+    toast.info("Minting Will Start Soon..");
+  };
   return (
     <>
       <Minting>
@@ -43,7 +48,11 @@ function Refer() {
             </div>
           )
         ) : (
-          <button className="connect" onClick={() => navigate("/contract")}>
+          <button
+            className="connect"
+            // onClick={() => navigate("/contract")}
+            onClick={onClick}
+          >
             <span>Mint</span>
           </button>
         )}

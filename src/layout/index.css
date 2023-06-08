@@ -1,0 +1,217 @@
+.layout-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.layout-section {
+  height: 100vh;
+  width: 100%;
+  background: url(../assets/images/BG.svg);
+  background-size: cover;
+}
+.layout-innerwidth {
+  width: 90%;
+  margin: 0 auto;
+}
+.layout-navbar {
+  width: 100%;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+}
+.layout-navbar .content-logo {
+  height: 45px;
+}
+.layout-navbar .racing-logo {
+  height: 90px;
+  width: 250px;
+}
+.layout-navbar .navbar-line {
+  background: linear-gradient(0deg, #3cb4d9 0%, #fefffd 100%);
+  height: 6px;
+  width: 100%;
+}
+.layout-navbar .navbar-btns {
+  right: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+.navbar-btns .network {
+  cursor: pointer;
+  background: linear-gradient(0deg, #02198b 0%, #000137 100%);
+  border-radius: 10px;
+  width: 205px;
+  height: 45px;
+  border: 1px solid #3cb4d9;
+}
+.network span {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+  color: #fff;
+}
+
+.navbar-btns .wallet {
+  cursor: pointer;
+  width: 205px;
+  height: 45px;
+  background: #000;
+  border-radius: 10px;
+  border: 1px solid #3cb4d9;
+}
+.wallet span {
+  display: block;
+  padding: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+  background: linear-gradient(0deg, #3cb4d9 0%, #fefffd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.layout-footer {
+  background: url(../assets/images/Race.png);
+  background-size: cover;
+  height: 800px;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.layout-footer .layout-footer-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.footer-slider {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  gap: 20px;
+  align-items: center;
+}
+.racing-logo {
+  width: 560px;
+  display: flex;
+  margin: 0 auto;
+}
+.img-slider {
+  width: 443.66px;
+  height: 442.19px;
+  border: 1px solid #00f0ff;
+}
+
+.layout-footer-box .footer-uppercontainer {
+  background: radial-gradient(50% 50% at 50% 50%, #5095fd 0%, #005b9c 100%);
+  height: 150px;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+}
+.footer-uppercontainer .upper-image {
+  position: absolute;
+  bottom: -5px;
+  width: 95%;
+  padding-left: 30px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: block;
+}
+.footer-uppercontainer .upper-image .upper-img {
+  width: 100%;
+}
+
+.footer-bottomcontainer {
+  width: 90%;
+  margin: 0 auto;
+  padding: 80px 0 90px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.footer-bottomcontainer .bottom-img {
+  width: 19%;
+  height: 230px;
+}
+@media (max-width: 1100px) {
+  .layout-innerwidth {
+    width: 95%;
+  }
+  .layout-navbar .racing-logo {
+    width: 200px;
+  }
+  .navbar-btns .network {
+    width: 160px;
+  }
+  .network span {
+    font-size: 18px;
+  }
+
+  .navbar-btns .wallet {
+    width: 160px;
+  }
+  .wallet span {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 786px) {
+  .layout-container {
+    background: linear-gradient(0deg, #02198b 0%, #000137 100%);
+  }
+  .layout-section{
+    background: transparent;
+  }
+  .layout-navbar {
+    padding: 0;
+    height: 135px;
+  }
+  .layout-navbar .content-logo {
+    align-self: flex-start;
+    margin-top: 25px;
+  }
+  .layout-navbar .racing-logo {
+    display: none;
+  }
+  .navbar-line {
+    display: none;
+  }
+  .layout-navbar .navbar-btns {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .navbar-btns .network {
+    width: 140px;
+  }
+  .network span {
+    font-size: 16px;
+  }
+
+  .navbar-btns .wallet {
+    width: 140px;
+  }
+  .wallet span {
+    font-size: 16px;
+  }
+  .layout-footer {
+    display: none;
+  }
+}

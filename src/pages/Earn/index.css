@@ -1,0 +1,264 @@
+.wrapper {
+  background: linear-gradient(279.56deg, #000137 -0.3%, #02198b 101.79%);
+  border-radius: 50px;
+  height: calc(100vh - 160px);
+  position: relative;
+}
+.earn-container {
+  padding: 50px 0;
+  display: flex;
+  gap: 50px;
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
+  height: -webkit-fill-available;
+}
+.earn-arrow {
+  width: 50px;
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+  cursor: pointer;
+}
+.earn-left {
+  width: 50%;
+}
+.earn-left img {
+  width: 100%;
+  /* height: 280px; */
+}
+.earn-right {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+}
+.earn-right .heading {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 30px;
+  color: #ffffff;
+  margin: 0;
+  padding-left: 10px;
+}
+.earn-right .sub-heading {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 30px;
+  color: #ffffff;
+  margin: 0;
+  padding-left: 10px;
+}
+.earn-right .list {
+  list-style-type: upper-roman;
+  list-style-position: inside;
+  margin: 0;
+  padding-left: 10px;
+}
+.earn-right .list li {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+.earn-generate {
+  cursor: pointer;
+  overflow: hidden;
+  width: 232px;
+  height: 50px;
+  background: linear-gradient(0deg, #3cb4d9 0%, #fefffd 100%);
+  border-radius: 10px;
+}
+.earn-generate span {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+}
+
+.generated-link {
+  overflow: hidden;
+  width: 341px;
+  height: 49px;
+  background: #ffffff;
+  border: 1px solid #0961a6;
+  border-radius: 10px;
+}
+.generated-link span {
+  text-overflow: ellipsis;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 0 10px;
+  line-height: 50px;
+  text-align: center;
+  color: #a7a7a7;
+  width: 98%;
+  white-space: nowrap;
+}
+.earn-btn {
+  display: flex;
+  gap: 10px;
+}
+.earn-mob-heading {
+  display: none;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 30px;
+  color: #ffffff;
+  margin: 0;
+  padding-left: 10px;
+}
+@media (max-width: 1100px) {
+  .earn-container {
+    padding: 25px;
+    gap: 10px;
+    width: 95%;
+  }
+  .earn .content {
+    width: 85%;
+    padding: 4rem 3rem;
+  }
+  /* .earn-left img {
+      width: 300px;
+    } */
+  .earn-right .heading {
+    font-size: 20px;
+  }
+  .earn-right .sub-heading {
+    font-size: 14px;
+  }
+  .earn-right .list li {
+    font-size: 14px;
+  }
+}
+@media (max-width: 786px) {
+  .earn .content {
+    border-radius: 20px;
+    padding: 20px;
+    flex-direction: column;
+    width: 70%;
+  }
+  .wrapper {
+    height: calc(100vh - 135px);
+  }
+  .earn-arrow {
+    width: 35px;
+    bottom: 10px;
+    right: 20px;
+  }
+  .earn-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    padding: 5px;
+    gap: 0px;
+  }
+  .earn-left {
+    width: 100%;
+    text-align: center;
+  }
+  .earn-left img {
+    height: 220px;
+  }
+  .earn-right {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .earn-mob-heading {
+    display: block;
+    font-size: 24px;
+    line-height: 36px;
+  }
+  .earn-right .heading {
+    display: none;
+  }
+  .earn-right .sub-heading {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .earn-right .list li {
+    font-family: "Manrope";
+    font-style: normal;
+  }
+  .earn-generate {
+    background: linear-gradient(0deg, #3cb4d9 0%, #fefffd 100%) !important;
+    width: 232px;
+  }
+  .generated-link {
+    width: 232px;
+  }
+  .earn-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .earn-arrow {
+    bottom: -8px;
+  }
+  .earn-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    padding: 0px;
+    gap: 0px;
+  }
+  .earn .content {
+    width: 90%;
+    padding: 10px;
+  }
+  .earn-generate {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(0deg, #3cb4d9 0%, #fefffd 100%);
+  }
+  .earn-left img {
+    height: 115px;
+  }
+  .generated-link {
+    width: 100%;
+    height: 40px;
+  }
+  .earn-right {
+    gap: 0;
+  }
+  .earn-mob-heading {
+    display: block;
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .earn-right .sub-heading {
+    font-size: 12px;
+  }
+  .earn-right .list li {
+    font-size: 12px;
+  }
+  .earn-generate span {
+    font-size: 16px;
+  }
+  .generated-link span {
+    font-size: 16px;
+  }
+}

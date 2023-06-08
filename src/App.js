@@ -8,9 +8,11 @@ import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { polygon, avalancheFuji } from "wagmi/chains";
 import Refer from "./components/Refer/Refer";
 import Contract from "./components/Contract/Contract";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Layout from "./layout";
+import { Routes } from "./routes";
 
 const chains = [polygon, avalancheFuji];
 const projectId = process.env.REACT_APP_PROJECT_ID;
@@ -29,10 +31,11 @@ function App() {
       <WagmiConfig config={wagmiConfig}>
         <BrowserRouter>
           <ToastContainer autoClose={1500} />
-          <Routes>
-            <Route path="/" element={<Refer />} />
+          <Routes />
+          {/* <Routes>
+            <Route path="/" element={<Layout />} />
             <Route path="/contract" element={<Contract />} />
-          </Routes>
+          </Routes> */}
         </BrowserRouter>
       </WagmiConfig>
 

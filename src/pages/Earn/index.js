@@ -17,11 +17,6 @@ const Earn = () => {
     navigator.clipboard.writeText(copylink);
     navigate("/");
   };
-  useEffect(() => {
-    if (address === undefined) {
-      navigate("/");
-    }
-  }, [address]);
   return (
     <div
       className="wrapper"

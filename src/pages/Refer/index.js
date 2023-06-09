@@ -75,7 +75,7 @@ const Refer = () => {
           <p className="refer-lt-d">
             Iconic Porsche racing team. Arabian Camels Porsche Racing team is
             the first Motorsport team to be co-owned by celebrities, influencers
-            and motorsport fans from around the globe - D igitally Syndicated
+            and motorsport fans from around the globe - Digitally Syndicated
             through blockchain.
           </p>
           <div className="refer-lt-btns">

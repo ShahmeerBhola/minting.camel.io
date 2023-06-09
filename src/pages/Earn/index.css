@@ -206,8 +206,8 @@
   }
 
   .earn-right .list li {
-    font-family: "Manrope";
-    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;
   }
   .earn-generate {
     background: linear-gradient(0deg, #3cb4d9 0%, #fefffd 100%) !important;
@@ -225,6 +225,13 @@
 }
 
 @media (max-width: 450px) {
+  .earn-right .sub-heading {
+    font-size: 12px;
+  }
+
+  .earn-right .list li {
+    font-size: 10px;
+  }
   .copy-icon {
     top: 8px;
   }

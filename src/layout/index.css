@@ -86,7 +86,7 @@
   background-clip: text;
 }
 .layout-footer {
-  background: url(../assets/images/Race.png);
+  background: url(../assets/images/Race.svg);
   background-size: cover;
   height: 550px;
   width: 100vw;

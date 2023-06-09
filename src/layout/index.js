@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { useConnect, useAccount, useNetwork, useSwitchNetwork } from "wagmi";
 import {
+  Arrow,
   ContentLogo,
   PorscheGreen,
   PorscheGroup,
@@ -12,8 +12,7 @@ import {
   PorscheYellow,
   RacingLogo,
 } from "../assets/images";
-import Slider from "../components/Slider";
-// import Swip from 'react-id-swiper';
+import { Web3Button, Web3NetworkSwitch } from "@web3modal/react";
 import "./index.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectCoverflow } from "swiper";
@@ -23,27 +22,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 function Layout() {
-  const { connect, connectors, error, isLoading, pendingConnector } =
-    useConnect();
-  const { address } = useAccount();
-  const { chain } = useNetwork();
-  const { chains, pendingChainId, switchNetwork } = useSwitchNetwork();
-  console.log("connectors", connectors, address);
   return (
     <div className="layout-container">
-      <>
-        {/* {chain && <div>Connected to {chain.name}</div>} */}
-        {/* {chains.map((x) => (
-          <button
-            disabled={!switchNetwork || x.id === chain?.id}
-            key={x.id}
-            onClick={() => switchNetwork?.(x.id)}
-          >
-            {x.name}
-            {isLoading && pendingChainId === x.id && " (switching)"}
-          </button>
-        ))} */}
-      </>
       <div className="layout-section">
         <div className="layout-innerwidth">
           <div className="layout-navbar">
@@ -51,25 +31,8 @@ function Layout() {
             <img className="racing-logo" src={RacingLogo} alt="" />
             <span className="navbar-line"></span>
             <div className="navbar-btns">
-              <button className="network">
-                <span>{chain ? chain.name : "Select Network"}</span>
-              </button>
-              <>
-                {connectors.map((connector) => (
-                  <>
-                    {connector.name === "MetaMask" && (
-                      <button
-                        disabled={!connector.ready}
-                        key={connector.id}
-                        className="wallet"
-                        onClick={() => connect({ connector })}
-                      >
-                        <span>{address ? address : "Connect Wallet"}</span>
-                      </button>
-                    )}
-                  </>
-                ))}
-              </>
+              <Web3NetworkSwitch />
+              <Web3Button />
             </div>
           </div>
           <Outlet />
@@ -79,6 +42,12 @@ function Layout() {
         <div className="layout-footer-box">
           <div className="footer-slider">
             <img src={RacingLogo} className="racing-logo" />
+            <div class="swiper-button-prev-unique">
+              <img src={Arrow} alt="arrow" />
+            </div>
+            <div class="swiper-button-next-unique">
+              <img src={Arrow} alt="arrow" />
+            </div>
             <Swiper
               spaceBetween={0}
               slidesPerView={5}
@@ -86,7 +55,10 @@ function Layout() {
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
               modules={[Navigation, Pagination, EffectCoverflow]}
-              navigation
+              navigation={{
+                nextEl: ".swiper-button-next-unique",
+                prevEl: ".swiper-button-prev-unique",
+              }}
               effect="coverflow"
               pagination={{ clickable: true }}
               coverflowEffect={{
@@ -97,7 +69,7 @@ function Layout() {
                 rotate: 0,
               }}
               centeredSlides={true}
-              loopedSlides={5}
+              loopedSlides={3}
             >
               <SwiperSlide>
                 <img className="img-slider" src={PorscheLining} />

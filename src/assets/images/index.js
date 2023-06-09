@@ -20,6 +20,8 @@ import DarkArrow from "./Dark-arrow.svg";
 import PorscheLeft from "./Porsche-left.svg";
 import Race from "./Race.svg";
 import PorscheGt from "./Porsche-gt.png";
+import Arrow from "./Arrow.png";
+import Copy from "./copy.png";
 
 export {
   Banner,
@@ -44,4 +46,6 @@ export {
   PorscheLeft,
   Race,
   PorscheGt,
+  Arrow,
+  Copy,
 };

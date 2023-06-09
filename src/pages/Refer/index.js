@@ -1,7 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { PorscheRedCircle, PorscheGt } from "../../assets/images";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  PorscheRedCircle,
+  PorscheGt,
+  PorscheLining,
+} from "../../assets/images";
 import "./index.css";
+import { Pagination, EffectCoverflow } from "swiper";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Refer = () => {
   console.log(window.innerWidth, "window.screen.width");
@@ -15,6 +25,53 @@ const Refer = () => {
             Arabian Camels <br />
             Porsche Racing NFT
           </p>
+          <Swiper
+            className="refer-swiper"
+            spaceBetween={0}
+            loop={true}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+            modules={[Pagination, EffectCoverflow]}
+            effect="coverflow"
+            coverflowEffect={{
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+              rotate: 0,
+            }}
+            centeredSlides={true}
+            breakpoints={{
+              575: {
+                slidesPerView: 5,
+              },
+              330: {
+                slidesPerView: 3,
+              },
+              200: {
+                slidesPerView: 2,
+              },
+            }}
+          >
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+          </Swiper>
           <p className="refer-lt-d">
             Iconic Porsche racing team. Arabian Camels Porsche Racing team is
             the first Motorsport team to be co-owned by celebrities, influencers

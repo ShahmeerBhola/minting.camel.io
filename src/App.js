@@ -6,12 +6,9 @@ import {
 } from "@web3modal/ethereum";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { polygon, avalancheFuji } from "wagmi/chains";
-import Refer from "./components/Refer/Refer";
-import Contract from "./components/Contract/Contract";
 import { BrowserRouter, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "./layout";
 import { Routes } from "./routes";
 
 const chains = [polygon, avalancheFuji];
@@ -44,7 +41,7 @@ function App() {
         ethereumClient={ethereumClient}
         themeVariables={{
           "--w3m-font-family": "Manrope",
-          "--w3m-accent-color": "#F5841F",
+          "--w3m-accent-color": "#02198b ",
         }}
       />
     </>

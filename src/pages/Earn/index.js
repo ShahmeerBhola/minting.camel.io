@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
-import { Cancel, Coin, DarkArrow, LightArrow } from "../../assets/images";
+import { Cancel, Coin, Copy, DarkArrow, LightArrow } from "../../assets/images";
 import "./index.css";
 
 const Earn = () => {
@@ -10,12 +10,12 @@ const Earn = () => {
   const baseUrl = `${window.location.origin}/contract`;
   const [walletAddress, setWalletAddress] = useState("");
   const linkHandler = () => {
-    // setWalletAddress(address);
-    setWalletAddress("hi");
+    setWalletAddress(address);
   };
   const copyHandler = () => {
     const copylink = `${baseUrl}?wallet=${walletAddress}`;
     navigator.clipboard.writeText(copylink);
+    navigate("/");
   };
   return (
     <div
@@ -122,6 +122,7 @@ const Earn = () => {
                 <span style={{ color: window.innerWidth > 786 && "#F4F5F7" }}>
                   COPY LINK
                 </span>
+                <img className="copy-icon" src={Copy} alt="copy-icon" />
               </button>
             )}
             {/* <div className="generated-link">

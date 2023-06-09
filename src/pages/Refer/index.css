@@ -170,6 +170,7 @@
 @media (max-width: 786px) {
   .refer-swiper {
     display: block;
+    margin: 0;
   }
   .swiper-3d .swiper-wrapper {
     width: 399px;

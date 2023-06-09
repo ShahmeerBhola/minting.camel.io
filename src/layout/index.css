@@ -240,7 +240,8 @@
     background: linear-gradient(0deg, #02198b 0%, #000137 100%);
   }
   .layout-section {
-    background: transparent;
+    background: url(../assets/images/BG_mob.svg);
+    background-size: cover;
   }
   .layout-navbar {
     padding: 0;

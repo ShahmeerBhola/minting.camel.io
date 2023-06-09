@@ -22,9 +22,21 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 function Layout() {
+  console.log(
+    "layout",
+    window.innerWidth <= 786 && window.location.pathname === "/contract"
+  );
   return (
     <div className="layout-container">
-      <div className="layout-section">
+      <div
+        className="layout-section"
+        style={{
+          background:
+            window.innerWidth <= 786 && window.location.pathname === "/contract"
+              ? "transparent"
+              : "",
+        }}
+      >
         <div className="layout-innerwidth">
           <div className="layout-navbar">
             <img className="content-logo" src={ContentLogo} alt="" />

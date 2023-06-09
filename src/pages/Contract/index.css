@@ -300,7 +300,11 @@
     line-height: 30px;
   }
   .contract-lt {
+    gap: 10px;
     align-items: center;
+  }
+  .contract-rt {
+    gap: 10px;
   }
   .contract-lt-h3 {
     font-size: 27px;
@@ -397,10 +401,15 @@
     font-size: 18px;
   }
   .contract-lt {
+    gap: 5px;
     width: 100%;
   }
   .contract-rt {
+    gap: 5px;
     width: 100%;
+  }
+  .contract-arrow {
+    bottom: 0;
   }
 }
 

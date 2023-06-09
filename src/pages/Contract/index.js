@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LightArrow, PorscheLeft } from "../../assets/images";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { LightArrow, PorscheLeft, PorscheLining } from "../../assets/images";
 import "./index.css";
 import { useAccount } from "wagmi";
 import { useDebounce } from "use-debounce";
@@ -8,6 +9,11 @@ import { contractAbi } from "../../utils/contractABI";
 import { useLocation } from "react-router-dom";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
+import { Pagination, EffectCoverflow } from "swiper";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 function Contract() {
   const location = useLocation();
@@ -133,6 +139,53 @@ function Contract() {
             Arabian Camels <br />
             Porsche Racing NFT
           </p>
+          <Swiper
+            className="refer-swiper"
+            spaceBetween={0}
+            loop={true}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+            modules={[Pagination, EffectCoverflow]}
+            effect="coverflow"
+            coverflowEffect={{
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+              rotate: 0,
+            }}
+            centeredSlides={true}
+            breakpoints={{
+              575: {
+                slidesPerView: 5,
+              },
+              330: {
+                slidesPerView: 3,
+              },
+              200: {
+                slidesPerView: 2,
+              },
+            }}
+          >
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="img-slider" src={PorscheLining} />
+            </SwiperSlide>
+          </Swiper>
           <img className="contract-lt-img" src={PorscheLeft} alt="" />
         </div>
         <div className="contract-rt">

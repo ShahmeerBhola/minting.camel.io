@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { Cancel, Coin, Copy, DarkArrow, LightArrow } from "../../assets/images";
@@ -17,6 +17,11 @@ const Earn = () => {
     navigator.clipboard.writeText(copylink);
     navigate("/");
   };
+  useEffect(() => {
+    if (address === undefined) {
+      navigate("/");
+    }
+  }, [address]);
   return (
     <div
       className="wrapper"

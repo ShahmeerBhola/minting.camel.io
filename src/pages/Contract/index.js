@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { LightArrow, PorscheLeft, PorscheLining } from "../../assets/images";
+import {
+  LightArrow,
+  PorscheGreen,
+  PorscheLeft,
+  PorscheLining,
+  PorscheOlive,
+  PorschePurple,
+  PorscheYellow,
+} from "../../assets/images";
 import "./index.css";
 import { useAccount } from "wagmi";
 import { useDebounce } from "use-debounce";
@@ -168,22 +176,22 @@ function Contract() {
             }}
           >
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorscheLining} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorscheYellow} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorschePurple} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorscheGreen} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorscheOlive} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorschePurple} alt="" />
             </SwiperSlide>
           </Swiper>
           <img className="contract-lt-img" src={PorscheLeft} alt="" />

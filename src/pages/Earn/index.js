@@ -1,21 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
-import { Cancel, Coin, Copy, DarkArrow, LightArrow } from "../../assets/images";
+import { Coin, Copy, DarkArrow, LightArrow } from "../../assets/images";
+import { toast } from "react-toastify";
 import "./index.css";
 
 const Earn = () => {
   const navigate = useNavigate();
   const { address } = useAccount();
+  console.log(address);
   const baseUrl = `${window.location.origin}/contract`;
   const [walletAddress, setWalletAddress] = useState("");
   const linkHandler = () => {
-    setWalletAddress(address);
+    if (!address) {
+      const Url = `metamask://dapp/${window.location.origin?.slice(8)}`;
+      setTimeout(() => {
+        window.open(Url, "_blank");
+      }, 2000);
+    } else {
+      setWalletAddress(address);
+    }
   };
   const copyHandler = () => {
     const copylink = `${baseUrl}?wallet=${walletAddress}`;
     navigator.clipboard.writeText(copylink);
-    navigate("/");
+    toast.success("Copied!!");
   };
   return (
     <div

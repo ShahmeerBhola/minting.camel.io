@@ -4,11 +4,9 @@ import {
   Arrow,
   ContentLogo,
   PorscheGreen,
-  PorscheGroup,
   PorscheLining,
   PorscheOlive,
   PorschePurple,
-  PorscheRed,
   PorscheYellow,
   RacingLogo,
 } from "../assets/images";
@@ -84,22 +82,22 @@ function Layout() {
               loopedSlides={3}
             >
               <SwiperSlide>
-                <img className="img-slider" src={PorscheLining} />
+                <img className="img-slider" src={PorscheLining} alt="" />
               </SwiperSlide>
               <SwiperSlide>
-                <img className="img-slider" src={PorscheLining} />
+                <img className="img-slider" src={PorscheYellow} alt="" />
               </SwiperSlide>
               <SwiperSlide>
-                <img className="img-slider" src={PorscheLining} />
+                <img className="img-slider" src={PorschePurple} alt="" />
               </SwiperSlide>
               <SwiperSlide>
-                <img className="img-slider" src={PorscheLining} />
+                <img className="img-slider" src={PorscheGreen} alt="" />
               </SwiperSlide>
               <SwiperSlide>
-                <img className="img-slider" src={PorscheLining} />
+                <img className="img-slider" src={PorscheOlive} alt="" />
               </SwiperSlide>
               <SwiperSlide>
-                <img className="img-slider" src={PorscheLining} />
+                <img className="img-slider" src={PorschePurple} alt="" />
               </SwiperSlide>
             </Swiper>
           </div>

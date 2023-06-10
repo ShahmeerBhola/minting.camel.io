@@ -174,7 +174,7 @@
   }
   .earn-container {
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 400px;
     padding: 5px;
@@ -185,7 +185,7 @@
     text-align: center;
   }
   .earn-left img {
-    height: 220px;
+    height: 250px;
   }
   .earn-right {
     width: 90%;
@@ -202,12 +202,12 @@
   .earn-right .sub-heading {
     font-weight: 700;
     font-size: 14px;
-    line-height: 18px;
+    line-height: 27px;
   }
 
   .earn-right .list li {
     font-size: 14px;
-    line-height: 18px;
+    line-height: 27px;
   }
   .earn-generate {
     background: linear-gradient(0deg, #3cb4d9 0%, #fefffd 100%) !important;
@@ -224,13 +224,14 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 410px) {
   .earn-right .sub-heading {
     font-size: 12px;
   }
 
   .earn-right .list li {
     font-size: 10px;
+    line-height: 25px;
   }
   .copy-icon {
     top: 8px;
@@ -239,9 +240,6 @@
     bottom: -8px;
   }
   .earn-container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 95%;
     padding: 0px;
     gap: 0px;
@@ -256,7 +254,7 @@
     background: linear-gradient(0deg, #3cb4d9 0%, #fefffd 100%);
   }
   .earn-left img {
-    height: 115px;
+    height: 175px;
   }
   .generated-link {
     width: 100%;
@@ -281,5 +279,15 @@
   }
   .generated-link span {
     font-size: 16px;
+  }
+}
+@media (max-width: 330px) {
+  .earn-container {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 395px) and (min-width: 390px){
+  .earn-left img {
+    height: 250px;
   }
 }

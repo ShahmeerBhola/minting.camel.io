@@ -5,6 +5,10 @@ import {
   PorscheRedCircle,
   PorscheGt,
   PorscheLining,
+  PorscheYellow,
+  PorschePurple,
+  PorscheGreen,
+  PorscheOlive,
 } from "../../assets/images";
 import "./index.css";
 import { Pagination, EffectCoverflow } from "swiper";
@@ -54,22 +58,22 @@ const Refer = () => {
             }}
           >
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorscheLining} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorscheYellow} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorschePurple} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorscheGreen} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorscheOlive} alt="" />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="img-slider" src={PorscheLining} />
+              <img className="img-slider" src={PorschePurple} alt="" />
             </SwiperSlide>
           </Swiper>
           <p className="refer-lt-d">

@@ -116,7 +116,7 @@
 .img-slider {
   width: 300px;
   height: 300px;
-  border: 1px solid #00f0ff;
+  /* border: 1px solid #00f0ff; */
 }
 
 .layout-footer-box .footer-uppercontainer {
@@ -241,7 +241,9 @@
   }
   .layout-section {
     background: url(../assets/images/BG_mob.svg);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
   }
   .layout-navbar {
     padding: 0;

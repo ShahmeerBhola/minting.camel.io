@@ -19,6 +19,7 @@
     "3d-react-carousal": "^5.0.0",
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
+    "dayjs": "^1.11.8",
     "ethers": "5.6.1",
     "https-browserify": "^1.0.0",
     "os-browserify": "^0.3.0",

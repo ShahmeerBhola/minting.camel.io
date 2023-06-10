@@ -1,0 +1,34 @@
+.countdown-timer {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 36px;
+  text-align: center;
+  color: #f4f5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.countdown-timer span {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin: 0;
+}
+.countdown-timer p {
+  margin: 0;
+  font-size: 20px;
+  height: 20px;
+}
+.two-numbers {
+  width: 2ch;
+}
+@media (max-width: 786px) {
+  .countdown-timer {
+    font-size: 30px;
+  }
+  .countdown-timer p {
+    font-size: 17px;
+    height: 17px;
+  }
+}

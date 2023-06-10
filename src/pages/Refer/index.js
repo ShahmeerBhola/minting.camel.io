@@ -16,9 +16,9 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import CountdownTimer from "../../components/CountdownTimer";
 
 const Refer = () => {
-  console.log(window.innerWidth, "window.screen.width");
   const navigate = useNavigate();
   return (
     <div className="wrapper">
@@ -82,8 +82,18 @@ const Refer = () => {
             and motorsport fans from around the globe - Digitally Syndicated
             through blockchain.
           </p>
+          <div className="refer-timer">
+            <p className="timetext">to go LIVE</p>
+            <CountdownTimer countdownTimestampMs={1687201200000} />
+          </div>
           <div className="refer-lt-btns">
             <button
+              className="refer-lt-mint"
+              onClick={() => navigate("/refer-earn")}
+            >
+              <span>Refer & Earn</span>
+            </button>
+            {/* <button
               className="refer-lt-mint"
               onClick={() => navigate("/contract")}
             >
@@ -94,7 +104,7 @@ const Refer = () => {
               onClick={() => navigate("/refer-earn")}
             >
               <span>Refer & Earn</span>
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="refer-rt">

@@ -142,6 +142,22 @@
   }
 }
 
+.refer-timer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  white-space: nowrap;
+}
+.refer-timer .timetext {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+}
 @media (max-width: 930px) {
   .refer-container {
     padding: 0 30px;
@@ -168,6 +184,9 @@
   }
 }
 @media (max-width: 786px) {
+  .refer-timer .timetext {
+    display: none;
+  }
   .refer-swiper {
     display: block;
     margin: 0;
@@ -253,6 +272,9 @@
 }
 
 @media (max-width: 400px) {
+  .refer-timer {
+    margin: 10px 0;
+  }
   .swiper-3d .swiper-wrapper {
     width: 210px;
   }

@@ -250,11 +250,11 @@
   }
   .layout-navbar {
     padding: 0;
-    height: 135px;
+    height: 125px;
   }
   .layout-navbar .content-logo {
     align-self: flex-start;
-    margin-top: 25px;
+    margin-top: 20px;
   }
   .layout-navbar .racing-logo {
     display: none;

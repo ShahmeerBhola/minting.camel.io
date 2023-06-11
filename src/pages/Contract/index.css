@@ -278,6 +278,9 @@
 }
 
 @media (max-width: 786px) {
+  .wrapper {
+    height: calc(100vh + 30px);
+  }
   .loader {
     top: 14px;
   }

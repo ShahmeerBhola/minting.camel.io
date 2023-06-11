@@ -248,6 +248,9 @@
 }
 
 @media (max-width: 575px) {
+  .wrapper {
+    height: calc(100vh + 30px);
+  }
   .swiper-3d .swiper-wrapper {
     width: 310px;
   }

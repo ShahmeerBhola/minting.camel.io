@@ -165,7 +165,7 @@
     width: 70%;
   }
   .wrapper {
-    height: calc(100vh - 150px);
+    height: calc(100vh + 30px);
   }
   .earn-arrow {
     width: 35px;
@@ -237,7 +237,7 @@
     top: 8px;
   }
   .earn-arrow {
-    bottom: -8px;
+    bottom: 10px;
   }
   .earn-container {
     width: 95%;

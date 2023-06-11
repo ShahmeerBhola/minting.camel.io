@@ -10,6 +10,7 @@ import {
   isEdge,
   isFirefox,
   isIOS,
+  isOpera,
   isSafari,
 } from "react-device-detect";
 
@@ -23,7 +24,7 @@ const Earn = () => {
     if (!address) {
       if (isDesktop) {
       } else {
-        if (isChrome || isFirefox || isEdge || isSafari) {
+        if (isChrome || isFirefox || isEdge || isSafari || isOpera) {
           if (isIOS) {
             const Url = `dapp://${window.location.origin?.slice(8)}`;
             setTimeout(() => {
@@ -37,6 +38,8 @@ const Earn = () => {
               window.open(Url, "_blank");
             }, 2000);
           }
+        } else {
+          setWalletAddress(window?.ethereum?.selectedAddress);
         }
       }
     } else {
@@ -90,8 +93,7 @@ const Earn = () => {
               color: walletAddress && window.innerWidth > 786 ? "#000" : "",
             }}
           >
-            Start monetizing your influence today. Join us!{address}heello
-            {window?.ethereum?.selectedAddress}
+            Start monetizing your influence today. Join us!
           </h6>
           <ol className="list">
             <li

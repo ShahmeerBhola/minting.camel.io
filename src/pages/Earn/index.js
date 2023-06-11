@@ -13,7 +13,7 @@ const Earn = () => {
   const [walletAddress, setWalletAddress] = useState("");
   const linkHandler = () => {
     if (!address) {
-      const Url = `metamask://dapp/${window.location.origin?.slice(8)}`;
+      const Url = `https://metamask.app.link/dapp/${window.location.origin?.slice(8)}`;
       setTimeout(() => {
         window.open(Url, "_blank");
       }, 2000);

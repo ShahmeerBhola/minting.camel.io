@@ -48,8 +48,14 @@ const Earn = () => {
   };
   const copyHandler = () => {
     const copylink = `${baseUrl}?wallet=${walletAddress}`;
-    navigator.clipboard.writeText(copylink);
+    const textField = document.createElement('textarea');
+    textField.value = copylink;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand('copy');
+    textField.remove();
     toast.success("Copied!!");
+    // navigator.clipboard.writeText(copylink)
   };
   return (
     <div
@@ -94,7 +100,6 @@ const Earn = () => {
             }}
           >
             Start monetizing your influence today. Join us!
-            {`${baseUrl}?wallet=${walletAddress}`}
           </h6>
           <ol className="list">
             <li

@@ -4,6 +4,7 @@ import { useAccount } from "wagmi";
 import { Coin, Copy, DarkArrow, LightArrow } from "../../assets/images";
 import { toast } from "react-toastify";
 import "./index.css";
+import { isIOS } from "react-device-detect";
 
 const Earn = () => {
   const navigate = useNavigate();
@@ -13,10 +14,19 @@ const Earn = () => {
   const [walletAddress, setWalletAddress] = useState("");
   const linkHandler = () => {
     if (!address) {
-      const Url = `https://metamask.app.link/dapp/${window.location.origin?.slice(8)}`;
-      setTimeout(() => {
-        window.open(Url, "_blank");
-      }, 2000);
+      if (isIOS) {
+        const Url = `dapp://${window.location.origin?.slice(8)}`;
+        setTimeout(() => {
+          window.open(Url, "_blank");
+        }, 2000);
+      } else {
+        const Url = `https://metamask.app.link/dapp/${window.location.origin?.slice(
+          8
+        )}`;
+        setTimeout(() => {
+          window.open(Url, "_blank");
+        }, 2000);
+      }
     } else {
       setWalletAddress(address);
     }

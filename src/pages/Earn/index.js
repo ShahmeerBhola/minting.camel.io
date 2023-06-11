@@ -22,7 +22,6 @@ const Earn = () => {
   const linkHandler = () => {
     if (!address) {
       if (isDesktop) {
-        
       } else {
         if (isChrome || isFirefox || isEdge || isSafari) {
           if (isIOS) {
@@ -83,7 +82,7 @@ const Earn = () => {
             className="heading"
             style={{ color: walletAddress ? "#000" : "" }}
           >
-            Refer & Win{address}heello{window.ethereum.selectedAddress}
+            Refer & Win
           </h3>
           <h6
             className="sub-heading"
@@ -91,7 +90,8 @@ const Earn = () => {
               color: walletAddress && window.innerWidth > 786 ? "#000" : "",
             }}
           >
-            Start monetizing your influence today. Join us!
+            Start monetizing your influence today. Join us!{address}heello
+            {window?.ethereum?.selectedAddress}
           </h6>
           <ol className="list">
             <li

@@ -4,7 +4,8 @@
   overflow: hidden;
 }
 .layout-section {
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100%;
   width: 100%;
   background: url(../assets/images/BG.svg);
   background-size: cover;
@@ -238,6 +239,8 @@
 @media (max-width: 786px) {
   .layout-container {
     background: linear-gradient(0deg, #02198b 0%, #000137 100%);
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
   .layout-section {
     background: url(../assets/images/BG_mob.svg);

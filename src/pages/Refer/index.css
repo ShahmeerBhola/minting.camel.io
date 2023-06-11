@@ -1,7 +1,7 @@
 .wrapper {
   background: linear-gradient(279.56deg, #000137 -0.3%, #02198b 101.79%);
   border-radius: 50px;
-  height: calc(100vh - 160px);
+  height: calc(100% - 160px);
 }
 .refer-container {
   padding: 50px;

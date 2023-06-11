@@ -2,7 +2,6 @@ import dayjs from "dayjs";
 
 export function getRemainingTimeUntilMsTimestamp(timestampMs) {
   const timestampDayjs = dayjs(timestampMs);
-  console.log(timestampDayjs, "timestampDayjs",dayjs('2023-6-20').valueOf());
   const nowDayjs = dayjs();
   if (timestampDayjs.isBefore(nowDayjs)) {
     return {

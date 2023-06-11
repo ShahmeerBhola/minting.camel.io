@@ -4,7 +4,14 @@ import { useAccount } from "wagmi";
 import { Coin, Copy, DarkArrow, LightArrow } from "../../assets/images";
 import { toast } from "react-toastify";
 import "./index.css";
-import { isIOS } from "react-device-detect";
+import {
+  isChrome,
+  isDesktop,
+  isEdge,
+  isFirefox,
+  isIOS,
+  isSafari,
+} from "react-device-detect";
 
 const Earn = () => {
   const navigate = useNavigate();
@@ -14,18 +21,24 @@ const Earn = () => {
   const [walletAddress, setWalletAddress] = useState("");
   const linkHandler = () => {
     if (!address) {
-      if (isIOS) {
-        const Url = `dapp://${window.location.origin?.slice(8)}`;
-        setTimeout(() => {
-          window.open(Url, "_blank");
-        }, 2000);
+      if (isDesktop) {
+        
       } else {
-        const Url = `https://metamask.app.link/dapp/${window.location.origin?.slice(
-          8
-        )}`;
-        setTimeout(() => {
-          window.open(Url, "_blank");
-        }, 2000);
+        if (isChrome || isFirefox || isEdge || isSafari) {
+          if (isIOS) {
+            const Url = `dapp://${window.location.origin?.slice(8)}`;
+            setTimeout(() => {
+              window.open(Url, "_blank");
+            }, 2000);
+          } else {
+            const Url = `https://metamask.app.link/dapp/${window.location.origin?.slice(
+              8
+            )}`;
+            setTimeout(() => {
+              window.open(Url, "_blank");
+            }, 2000);
+          }
+        }
       }
     } else {
       setWalletAddress(address);
@@ -70,7 +83,7 @@ const Earn = () => {
             className="heading"
             style={{ color: walletAddress ? "#000" : "" }}
           >
-            Refer & Win
+            Refer & Win{address}heello{window.ethereum.selectedAddress}
           </h3>
           <h6
             className="sub-heading"

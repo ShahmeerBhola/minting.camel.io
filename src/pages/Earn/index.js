@@ -94,6 +94,7 @@ const Earn = () => {
             }}
           >
             Start monetizing your influence today. Join us!
+            {`${baseUrl}?wallet=${walletAddress}`}
           </h6>
           <ol className="list">
             <li
